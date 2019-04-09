@@ -37,4 +37,8 @@ dependencies {
 
     //square image view
     // compile 'com.github.Theophrast:SquareImageView:1.0.1'
+
+
+    // internet capabilities
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
 }
