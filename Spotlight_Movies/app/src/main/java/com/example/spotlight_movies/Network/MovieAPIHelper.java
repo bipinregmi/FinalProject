@@ -16,11 +16,6 @@ class MovieAPIHelper {
     private static final String apiKey = "94f2d3081ba573d2f171f0f8020eb38a";
 
 
-    /**
-     * Searches the YummlyApi recipe database.
-     * @param input the ingredient to search in recipes
-     * @return string: JSON response with matching recipes
-     */
     static String searchMovies(String input) {
         OkHttpClient client = new OkHttpClient();
 
