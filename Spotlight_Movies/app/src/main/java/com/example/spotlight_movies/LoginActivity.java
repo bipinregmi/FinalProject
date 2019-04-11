@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
     private CardView loginButton;
+    private CardView sampleButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +23,23 @@ public class LoginActivity extends AppCompatActivity {
                 openHomeActivity();
             }
         });
+
+        sampleButton = (CardView) findViewById(R.id.sample);
+        sampleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMovieActivity();
+            }
+        });
     }
 
     public void openHomeActivity(){
         Intent intent= new Intent(this,HomeActivity.class);
+        startActivity(intent);
+    }
+
+    public void openMovieActivity(){
+        Intent intent= new Intent(this,MovieActivity.class);
         startActivity(intent);
     }
 }
