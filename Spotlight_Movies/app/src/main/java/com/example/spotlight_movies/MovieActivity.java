@@ -35,6 +35,12 @@ public class MovieActivity extends AppCompatActivity {
             }
         });
 
+        /*
+        System.out.println("TESTING MOVIE API...");
+        MovieAPIHelper apiHelper = new MovieAPIHelper();
+        String testResult = apiHelper.searchMovies("jaws");
+        System.out.println(testResult);
+        */
     }
 
     @Override

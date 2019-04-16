@@ -9,14 +9,15 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-class MovieAPIHelper {
+public class MovieAPIHelper {
     private static final String TAG = "MovieHelper";
 
-    private static final String baseApiUrl = "https://api.themoviedb.org/3/movie/550?api_key=94f2d3081ba573d2f171f0f8020eb38a";
+    private static final String baseApiUrl = "https://api.themoviedb.org/";
+    // 3/movie/550?api_key=94f2d3081ba573d2f171f0f8020eb38a
     private static final String apiKey = "94f2d3081ba573d2f171f0f8020eb38a";
 
 
-    static String searchMovies(String input) {
+    public static String searchMovies(String input) {
         OkHttpClient client = new OkHttpClient();
 
         // piece together a valid url, starting with the base

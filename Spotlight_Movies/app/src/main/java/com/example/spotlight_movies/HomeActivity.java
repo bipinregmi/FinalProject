@@ -1,17 +1,37 @@
 package com.example.spotlight_movies;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.example.spotlight_movies.Network.ApiInterface;
+import com.example.spotlight_movies.Network.MovieResults;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeActivity extends AppCompatActivity {
 
     private static final String TAG = "HomeActivity";
+
+    // API test variables
+    public static String BASE_URL = "https://api.themoviedb.org/";
+    public static int PAGE = 1;
+    public static String API_KEY = "94f2d3081ba573d2f171f0f8020eb38a";
+    public static String LANGUAGE = "en-US";
+    public static String CATEGORY = "popular";
+
+    private TextView myTextView;
+    // end API test variables
 
     //variables
     private ArrayList<String> mImageUrls = new ArrayList<>();
@@ -21,9 +41,36 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        myTextView = (TextView)findViewById(R.id.resultsTest);
+
 
         getImages();
 
+        Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl(BASE_URL)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+
+        ApiInterface myInterface = retrofit.create(ApiInterface.class);
+
+        Call<MovieResults> call = myInterface.listOfMovies(CATEGORY,API_KEY,LANGUAGE,PAGE);
+
+        call.enqueue(new Callback<MovieResults>() {
+            @Override
+            public void onResponse(Call<MovieResults> call, Response<MovieResults> response) {
+                MovieResults results = response.body();
+                List<MovieResults.Result> listOfMovies = results.getResults();
+                MovieResults.Result firstMovie = listOfMovies.get(0);
+
+                myTextView.setText(firstMovie.getTitle());
+            }
+
+            @Override
+            public void onFailure(Call<MovieResults> call, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
 
 
     }
