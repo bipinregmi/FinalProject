@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     android:background="#8c4545">
 
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="482dp" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="559dp" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -57,10 +73,23 @@
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="311dp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="357dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="393dp"
-                android:layout_height="122dp"
+                android:layout_height="110dp"
                 android:background="#8c4545"
                 android:ems="10"
                 android:text="Dr. Louis Creed and his wife, Rachel, relocate from Boston to rural Maine with their two young children. The couple soon discover a mysterious burial ground hidden deep in the woods near their new home. When tragedy strikes, Louis turns to his neighbour Jud Crandall, setting off a perilous chain reaction that unleashes an unspeakable evil with horrific consequences."
@@ -126,6 +155,22 @@
                 android:textColor="#FFFFFF"
                 android:textSize="25dp"
                 tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="568dp" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="29dp"
+                tools:layout_editor_absoluteY="499dp" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/floatingActionButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:srcCompat="@android:drawable/arrow_up_float"
+                tools:layout_editor_absoluteX="338dp"
                 tools:layout_editor_absoluteY="490dp" />
 
         </android.support.constraint.ConstraintLayout>
@@ -136,23 +181,23 @@
         android:layout_width="119dp"
         android:layout_height="130dp"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="537dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic[16]" />
+        tools:layout_editor_absoluteY="622dp"
+        tools:srcCompat="@drawable/first" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="119dp"
         android:layout_height="130dp"
         tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="537dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic[16]" />
+        tools:layout_editor_absoluteY="622dp"
+        tools:srcCompat="@drawable/Second" />
 
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="119dp"
         android:layout_height="130dp"
         tools:layout_editor_absoluteX="276dp"
-        tools:layout_editor_absoluteY="537dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic[16]" />
+        tools:layout_editor_absoluteY="622dp"
+        tools:srcCompat="@drawable/Third" />
 
 </android.support.constraint.ConstraintLayout>
