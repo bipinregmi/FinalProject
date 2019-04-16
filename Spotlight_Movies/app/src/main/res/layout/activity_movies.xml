@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray">
+    android:background="#8c4545">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,14 +26,39 @@
                 android:theme="?attr/actionBarTheme"
                 app:title="Spotlight Movies" />
 
-            <VideoView
-                android:id="@+id/videoView"
-                android:layout_width="268dp"
-                android:layout_height="219dp"
-                android:layout_marginLeft="75dp"
-                android:layout_marginTop="50dp"
-                tools:layout_editor_absoluteX="71dp"
-                tools:layout_editor_absoluteY="68dp" />
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/Top_Photo" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginRight="275dp"
+                tools:srcCompat="@drawable/Movie_Icon" />
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="410dp"
+                android:layout_height="50dp"
+                android:background="#8c4545"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Pet Sematary                                                  (2019) "
+                android:textColor="#FFFFFF"
+                tools:layout_editor_absoluteX="98dp"
+                tools:layout_editor_absoluteY="445dp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="#8c4545"
+                android:ems="10"
+                android:text="Dr. Louis Creed and his wife, Rachel, relocate from Boston to rural Maine with their two young children. The couple soon discover a mysterious burial ground hidden deep in the woods near their new home. When tragedy strikes, Louis turns to his neighbour Jud Crandall, setting off a perilous chain reaction that unleashes an unspeakable evil with horrific consequences."
+                android:textColor="#FFFFFF" />
 
             <RatingBar
                 android:id="@+id/ratingBar"
@@ -43,21 +68,6 @@
                 android:layout_marginTop="30dp"
                 tools:layout_editor_absoluteX="85dp"
                 tools:layout_editor_absoluteY="336dp" />
-
-            <EditText
-                android:id="@+id/editText3"
-                android:layout_width="370dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="30dp"
-                android:background="#808080"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Pet Sematary
-R 2019 ‧ Thriller/Horror ‧ 1h 40m"
-                android:textColor="#FFFFFF"
-                tools:layout_editor_absoluteX="98dp"
-                tools:layout_editor_absoluteY="445dp" />
 
         </LinearLayout>
     </ScrollView>
