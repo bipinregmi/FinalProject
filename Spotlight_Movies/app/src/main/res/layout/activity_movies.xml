@@ -51,21 +51,22 @@
                 android:background="#8c4545"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Pet Sematary                                                  (2019) "
+                android:text=" Pet Sematary                            (2019) "
                 android:textColor="#FFFFFF"
+                android:textSize="25"
                 tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="316dp" />
+                tools:layout_editor_absoluteY="311dp" />
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="410dp"
-                android:layout_height="114dp"
+                android:layout_width="393dp"
+                android:layout_height="122dp"
                 android:background="#8c4545"
                 android:ems="10"
                 android:text="Dr. Louis Creed and his wife, Rachel, relocate from Boston to rural Maine with their two young children. The couple soon discover a mysterious burial ground hidden deep in the woods near their new home. When tragedy strikes, Louis turns to his neighbour Jud Crandall, setting off a perilous chain reaction that unleashes an unspeakable evil with horrific consequences."
                 android:textColor="#FFFFFF"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="356dp" />
+                tools:layout_editor_absoluteX="13dp"
+                tools:layout_editor_absoluteY="365dp" />
 
             <Button
                 android:id="@+id/button"
@@ -117,6 +118,16 @@
                 tools:layout_editor_absoluteX="7dp"
                 tools:layout_editor_absoluteY="0dp" />
 
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="277dp"
+                android:layout_height="37dp"
+                android:text=" Related Movies:"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="490dp" />
+
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
@@ -125,7 +136,7 @@
         android:layout_width="119dp"
         android:layout_height="130dp"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="521dp"
+        tools:layout_editor_absoluteY="537dp"
         tools:srcCompat="@tools:sample/backgrounds/scenic[16]" />
 
     <ImageView
@@ -133,7 +144,7 @@
         android:layout_width="119dp"
         android:layout_height="130dp"
         tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="521dp"
+        tools:layout_editor_absoluteY="537dp"
         tools:srcCompat="@tools:sample/backgrounds/scenic[16]" />
 
     <ImageView
@@ -141,17 +152,7 @@
         android:layout_width="119dp"
         android:layout_height="130dp"
         tools:layout_editor_absoluteX="276dp"
-        tools:layout_editor_absoluteY="521dp"
+        tools:layout_editor_absoluteY="537dp"
         tools:srcCompat="@tools:sample/backgrounds/scenic[16]" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="277dp"
-        android:layout_height="37dp"
-        android:text="Related Movies:"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="479dp"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp"/>
 
 </android.support.constraint.ConstraintLayout>
