@@ -5,7 +5,7 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
+    android:background="@color/MainColor"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -34,7 +34,7 @@
             android:layout_marginLeft="76dp"
             android:layout_marginBottom="292dp"
             android:text="Spotlight"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="#FFFFFF"
             android:textSize="60sp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +48,7 @@
             android:layout_marginLeft="100dp"
             android:layout_marginBottom="232dp"
             android:text="Movies"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="#FFFFFF"
             android:textSize="60sp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
