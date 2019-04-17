@@ -83,23 +83,27 @@
         android:text="Register Here.."
         android:textColor="@color/colorPrimaryDark" />
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/sample"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/colorAccent">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/sample"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="48dp"
+            app:cardBackgroundColor="@color/colorAccent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="8dp">
 
             <TextView
                 android:id="@+id/sampleText"
-                android:layout_width="wrap_content"
+                android:layout_width="171dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="Sample Profile" />
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>
+
+    </android.support.constraint.ConstraintLayout>
 
 
 </RelativeLayout>
