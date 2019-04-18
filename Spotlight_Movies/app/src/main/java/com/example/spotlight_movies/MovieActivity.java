@@ -28,6 +28,16 @@ public class MovieActivity extends AppCompatActivity {
 
             }
         });
+
+        final Button review = findViewById(R.id.review);
+        review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MovieActivity.this, ReviewActivity.class));
+
+            }
+        });
+
     }
 
 
