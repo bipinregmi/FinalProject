@@ -133,7 +133,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/cast"
                 android:layout_width="wrap_content"
                 android:layout_height="52dp"
                 android:layout_marginTop="252dp"
