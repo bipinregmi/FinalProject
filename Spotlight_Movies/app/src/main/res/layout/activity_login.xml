@@ -35,8 +35,9 @@
         android:layout_height="150dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="59dp"
-        app:srcCompat="@drawable/icon" />
+        android:layout_marginTop="130dp"
+        android:background="@color/MainColor"
+        app:srcCompat="@drawable/icon_image" />
 
 
     <EditText
@@ -45,13 +46,13 @@
         android:layout_height="40dp"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="80dp"
         android:background="#11000000"
         android:drawableLeft="@drawable/ic_action_user"
         android:ems="10"
         android:hint=" Username"
-        android:textColor="#FFFFFF"
         android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
         android:textSize="16dp" />
 
     <EditText
@@ -104,6 +105,19 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
         android:text="Register Here..."
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_alignEnd="@+id/toolbar3"
+        android:layout_alignRight="@+id/toolbar3"
+        android:layout_marginTop="-6dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginRight="124dp"
+        android:text="Spotlight Movies"
         android:textColor="#FFFFFF" />
 
 
