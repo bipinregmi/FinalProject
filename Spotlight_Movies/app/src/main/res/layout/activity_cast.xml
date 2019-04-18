@@ -134,12 +134,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/cast"
                 android:layout_width="wrap_content"
                 android:layout_height="52dp"
                 android:layout_marginTop="184dp"
-                android:layout_marginEnd="124dp"
-                android:layout_marginRight="124dp"
+                android:layout_marginEnd="120dp"
+                android:layout_marginRight="120dp"
                 android:text="Cast"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
