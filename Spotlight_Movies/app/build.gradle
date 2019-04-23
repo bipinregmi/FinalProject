@@ -30,6 +30,7 @@ dependencies {
 
     //recyclerview
     //  compile 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
 
     //glide
     implementation 'com.github.bumptech.glide:glide:4.4.0'
@@ -42,5 +43,11 @@ dependencies {
     // internet capabilities
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'com.android.support:mediarouter-v7:28.0.0'
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    
+    // API stuff
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+    // GSON
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
