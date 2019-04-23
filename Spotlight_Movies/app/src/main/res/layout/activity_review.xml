@@ -8,7 +8,7 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="410dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         android:minHeight="?attr/actionBarSize"
@@ -30,19 +30,8 @@
         android:textColor="#FFFFFF"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="@+id/searchView"
-        app:layout_constraintStart_toStartOf="@+id/floatingActionButton"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="52dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:clickable="true"
         app:layout_constraintStart_toStartOf="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/checkbox_off_background" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <SearchView
         android:id="@+id/searchView"
@@ -170,5 +159,17 @@
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/home3"
+        android:layout_width="45dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/icon_home"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
