@@ -5,7 +5,7 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
+    android:background="@color/MainColor"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="150dp"
-        app:srcCompat="@drawable/icon"
+        app:srcCompat="@drawable/icon_image"
         tools:layout_editor_absoluteX="145dp"
         tools:layout_editor_absoluteY="114dp" />
 
@@ -28,27 +28,31 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="287dp"
+            android:layout_width="244dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="76dp"
             android:layout_marginLeft="76dp"
-            android:layout_marginBottom="292dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="288dp"
             android:text="Spotlight"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="#000000 "
             android:textSize="60sp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.084"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="225dp"
+            android:layout_width="197dp"
             android:layout_height="74dp"
-            android:layout_marginStart="100dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginBottom="232dp"
+            android:layout_marginStart="104dp"
+            android:layout_marginLeft="104dp"
+            android:layout_marginBottom="228dp"
             android:text="Movies"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="#FFFFFF"
             android:textSize="60sp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -119,6 +119,24 @@ public class HomeActivity extends AppCompatActivity {
         RecyclerViewAdapter adapterH = new RecyclerViewAdapter(this, mImageUrls);
         recyclerViewH.setAdapter(adapterH);
 
+        LinearLayoutManager layoutManagerH2 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        RecyclerView recyclerViewH2 = findViewById(R.id.recyclerView_H2);
+        recyclerViewH2.setLayoutManager(layoutManagerH2);
+        RecyclerViewAdapter adapterH2 = new RecyclerViewAdapter(this, mImageUrls);
+        recyclerViewH2.setAdapter(adapterH2);
+
+        LinearLayoutManager layoutManagerH3 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        RecyclerView recyclerViewH3 = findViewById(R.id.recyclerView_H3);
+        recyclerViewH3.setLayoutManager(layoutManagerH3);
+        RecyclerViewAdapter adapterH3 = new RecyclerViewAdapter(this, mImageUrls);
+        recyclerViewH3.setAdapter(adapterH3);
+
+        LinearLayoutManager layoutManagerH4 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        RecyclerView recyclerViewH4 = findViewById(R.id.recyclerView_H4);
+        recyclerViewH4.setLayoutManager(layoutManagerH4);
+        RecyclerViewAdapter adapterH4 = new RecyclerViewAdapter(this, mImageUrls);
+        recyclerViewH4.setAdapter(adapterH4);
+
         /*
         LinearLayoutManager layoutManagerV = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         RecyclerView recyclerViewV = findViewById(R.id.recyclerView_V);

@@ -4,60 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
+    android:background="@color/MainColor"
 
     tools:context=".LoginActivity">
 
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <TextView
+        android:id="@+id/sample"
+        android:layout_width="171dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginRight="120dp"
+        android:text="Sample Profile"
+        android:textColor="#FFFFFF" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="120dp"
         android:layout_height="150dp"
-        android:layout_marginTop="59dp"
-        app:srcCompat="@drawable/icon"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"/>
+        android:layout_marginTop="130dp"
+        android:background="@color/MainColor"
+        app:srcCompat="@drawable/icon_image" />
 
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginTop="120dp"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
         android:background="#11000000"
-        android:ems="10"
         android:drawableLeft="@drawable/ic_action_user"
+        android:ems="10"
+        android:hint=" Username"
         android:inputType="textPersonName"
-        android:hint="Username"
-        android:textSize="16dp"/>
+        android:textColor="#FFFFFF"
+        android:textSize="16dp" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText"
         android:layout_below="@+id/editText"
+        android:layout_alignStart="@+id/editText"
+        android:layout_alignLeft="@+id/editText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="38dp"
         android:background="#11000000"
-        android:ems="10"
         android:drawableLeft="@drawable/ic_action_pass"
-        android:hint="Password"
-        android:inputType="textPassword"/>
+        android:ems="10"
+        android:textColor="#FFFFFF"
+        android:hint=" Password"
+        android:inputType="textPassword"
+        android:textSize="16dp"/>
 
     <android.support.v7.widget.CardView
-        android:layout_width="300dp"
-        android:layout_height="50dp"
         android:id="@+id/login"
+        android:layout_width="225dp"
+        android:layout_height="48dp"
         android:layout_below="@+id/editText2"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
         app:cardBackgroundColor="@color/colorAccent"
         app:cardCornerRadius="25dp"
-        app:cardElevation="10dp"
-        android:layout_marginTop="68dp">
+        app:cardElevation="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -67,9 +91,9 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:text="Login"
-                android:textColor="#fff"
-                android:layout_centerInParent="true"/>
+                android:textColor="#FFFFFF" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
@@ -80,26 +104,21 @@
         android:layout_below="@+id/login"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
-        android:text="Register Here.."
-        android:textColor="@color/colorPrimaryDark" />
+        android:text="Register Here..."
+        android:textColor="#FFFFFF" />
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/colorAccent"
-        android:id="@+id/sample">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/sampleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sample Profile" />
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
+        android:layout_below="@+id/imageView"
+        android:layout_alignEnd="@+id/toolbar3"
+        android:layout_alignRight="@+id/toolbar3"
+        android:layout_marginTop="-6dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginRight="124dp"
+        android:text="Spotlight Movies"
+        android:textColor="#FFFFFF" />
 
 
 </RelativeLayout>

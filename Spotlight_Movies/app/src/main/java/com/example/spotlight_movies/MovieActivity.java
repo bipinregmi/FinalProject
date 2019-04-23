@@ -1,22 +1,53 @@
 package com.example.spotlight_movies;
 
-import android.media.MediaPlayer;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.widget.VideoView;
+import android.view.View;
+import android.widget.Button;
 
 public class MovieActivity extends AppCompatActivity {
+    /*
     private static final String NAME_KEY = "MoviesActivity";
-    private String path ="https://www.youtube.com/watch?v=zK0LNzU2TQI";
+    */
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
+
+        final Button cast = findViewById(R.id.cast);
+        cast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MovieActivity.this, CastActivity.class));
+
+            }
+        });
+
+        final Button review = findViewById(R.id.review);
+        review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MovieActivity.this, ReviewActivity.class));
+
+            }
+        });
+
+    }
+
+
+
+
+
+
+
+
+/*
 
         Uri uri = Uri.parse(path);
 
@@ -33,7 +64,8 @@ public class MovieActivity extends AppCompatActivity {
                 mp.setLooping(true);
                 mp.setOnCompletionListener(null);
             }
-        });
+
+        });*/
 
         /*
         System.out.println("TESTING MOVIE API...");
@@ -41,13 +73,5 @@ public class MovieActivity extends AppCompatActivity {
         String testResult = apiHelper.searchMovies("jaws");
         System.out.println(testResult);
         */
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.movie_menu, menu);
-        return true;
-    }
 
 }

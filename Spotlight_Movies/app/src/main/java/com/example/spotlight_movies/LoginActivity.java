@@ -8,7 +8,7 @@ import android.view.View;
 
 public class LoginActivity extends AppCompatActivity {
     private CardView loginButton;
-    private CardView sampleButton;
+    private TextView sampleButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        sampleButton = (CardView) findViewById(R.id.sample);
+        sampleButton = (TextView) findViewById(R.id.sample);
         sampleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
