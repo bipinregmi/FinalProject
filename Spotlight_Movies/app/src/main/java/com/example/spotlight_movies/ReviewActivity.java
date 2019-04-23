@@ -30,6 +30,15 @@ public class ReviewActivity extends AppCompatActivity {
 
             }
         });
+
+        final Button home3 = findViewById(R.id.home3);
+        home3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ReviewActivity.this, HomeActivity.class));
+
+            }
+        });
     }
 
 

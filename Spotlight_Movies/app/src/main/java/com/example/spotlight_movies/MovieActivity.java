@@ -38,6 +38,15 @@ public class MovieActivity extends AppCompatActivity {
             }
         });
 
+        final Button home = findViewById(R.id.home);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MovieActivity.this, HomeActivity.class));
+
+            }
+        });
+
     }
 
 
