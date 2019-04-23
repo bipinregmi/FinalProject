@@ -1,10 +1,13 @@
 package com.example.spotlight_movies;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.spotlight_movies.Network.ApiInterface;
@@ -68,6 +71,15 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<MovieResults> call, Throwable t) {
                 t.printStackTrace();
+
+            }
+        });
+
+        final Button logoff = findViewById(R.id.logoff);
+        logoff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
 
             }
         });
