@@ -12,11 +12,7 @@ import com.example.spotlight_movies.Network.ApiInterface;
 import com.example.spotlight_movies.Network.MovieResults;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -40,9 +36,9 @@ public class HomeActivity extends AppCompatActivity {
 
     //variables
     private ArrayList<String> mImageUrls_popular = new ArrayList<>();
+    private ArrayList<String> mImageUrls_upcoming = new ArrayList<>();
     private ArrayList<MovieResults.Result> popularMovies = new ArrayList<>();
     private ArrayList<MovieResults.Result> upcomingMovies = new ArrayList<>();
-    private ArrayList<String> mImageUrls_upcoming = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +59,12 @@ public class HomeActivity extends AppCompatActivity {
         popularMovies = factory.manageCallback(CATEGORY_1);
         upcomingMovies = factory.manageCallback(CATEGORY_2);
 
-        Call<MovieResults> call = myInterface.listOfMovies(CATEGORY_1,API_KEY,LANGUAGE,PAGE);
-        //Call<MovieResults> call_2 = myInterface.listOfMovies(CATEGORY_2,API_KEY,LANGUAGE,PAGE);
+        //??????
+        populateRecyclerViews();
 
+        //Call<MovieResults> call = myInterface.listOfMovies(CATEGORY_1,API_KEY,LANGUAGE,PAGE);
+        //Call<MovieResults> call_2 = myInterface.listOfMovies(CATEGORY_2,API_KEY,LANGUAGE,PAGE);
+/*
         call.enqueue(new Callback<MovieResults>() {
             @Override
             public void onResponse(Call<MovieResults> call, Response<MovieResults> response) {
@@ -96,15 +95,19 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+        */
 
 
     }
 
     private void populateRecyclerViews() {
-        Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
+        Log.d(TAG, "populateRecyclerViews: initImageBitmaps: preparing bitmaps.");
 
         for (int i = 0; i < popularMovies.size(); i++) {
-            mImageUrls_popular.add(BASE_IMAGE_URL + listOfMovies.get(i).getPosterPath());
+            mImageUrls_popular.add(BASE_IMAGE_URL + popularMovies.get(i).getPosterPath());
+        }
+        for (int i = 0; i < upcomingMovies.size(); i++) {
+            mImageUrls_upcoming.add(BASE_IMAGE_URL + upcomingMovies.get(i).getPosterPath());
         }
 
         initRecyclerView();
@@ -162,20 +165,20 @@ public class HomeActivity extends AppCompatActivity {
         RecyclerViewAdapter adapterH2 = new RecyclerViewAdapter(this, mImageUrls_upcoming);
         recyclerViewH2.setAdapter(adapterH2);
 
-        /*
+
         LinearLayoutManager layoutManagerH3 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         RecyclerView recyclerViewH3 = findViewById(R.id.recyclerView_H3);
         recyclerViewH3.setLayoutManager(layoutManagerH3);
-        RecyclerViewAdapter adapterH3 = new RecyclerViewAdapter(this, mImageUrls);
+        RecyclerViewAdapter adapterH3 = new RecyclerViewAdapter(this, mImageUrls_upcoming);
         recyclerViewH3.setAdapter(adapterH3);
 
         LinearLayoutManager layoutManagerH4 = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         RecyclerView recyclerViewH4 = findViewById(R.id.recyclerView_H4);
         recyclerViewH4.setLayoutManager(layoutManagerH4);
-        RecyclerViewAdapter adapterH4 = new RecyclerViewAdapter(this, mImageUrls);
+        RecyclerViewAdapter adapterH4 = new RecyclerViewAdapter(this, mImageUrls_upcoming);
         recyclerViewH4.setAdapter(adapterH4);
 
-        */
+
         /*
         LinearLayoutManager layoutManagerV = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         RecyclerView recyclerViewV = findViewById(R.id.recyclerView_V);
