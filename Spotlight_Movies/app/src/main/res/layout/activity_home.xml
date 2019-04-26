@@ -63,7 +63,7 @@
                 android:layout_width="410dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="240dp"
-                android:text="Superheroes"
+                android:text="Upcoming"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,7 +72,7 @@
                 android:layout_width="412dp"
                 android:layout_height="43dp"
                 android:layout_marginTop="420dp"
-                android:text="Scary/Horror"
+                android:text="Popular"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,7 +81,7 @@
                 android:layout_width="410dp"
                 android:layout_height="38dp"
                 android:layout_marginTop="10dp"
-                android:text="Recommended Movies"
+                android:text="Movies"
                 android:textColor="#FFFFFF"
                 android:textSize="25dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +91,7 @@
                 android:id="@+id/textView9"
                 android:layout_width="410dp"
                 android:layout_height="32dp"
-                android:text="Action/Adventure"
+                android:text="Popular"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -100,14 +100,14 @@
                 android:layout_width="354dp"
                 android:layout_height="66dp"
                 android:layout_marginTop="596dp"
-                android:text="Comedy"
+                android:text="Popular"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerView_H"
                 android:layout_width="match_parent"
-                android:layout_height="152dp"
+                android:layout_height="@dimen/poster_image_height"
                 android:layout_marginTop="96dp"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toTopOf="parent"
@@ -118,7 +118,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerView_H2"
                 android:layout_width="match_parent"
-                android:layout_height="153dp"
+                android:layout_height="@dimen/poster_image_height"
                 android:layout_marginTop="456dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
@@ -129,7 +129,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerView_H3"
                 android:layout_width="match_parent"
-                android:layout_height="138dp"
+                android:layout_height="@dimen/poster_image_height"
                 android:layout_marginTop="284dp"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toTopOf="parent"
@@ -138,7 +138,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerView_H4"
                 android:layout_width="match_parent"
-                android:layout_height="153dp"
+                android:layout_height="@dimen/poster_image_height"
                 android:layout_marginTop="632dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
@@ -149,7 +149,7 @@
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 
-    // Create a textview for visualizing results of test API call
+    <!--Create a textview for visualizing results of test API call-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
