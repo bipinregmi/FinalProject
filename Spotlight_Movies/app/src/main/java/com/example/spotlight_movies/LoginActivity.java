@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
     private CardView loginButton;
-    private TextView sampleButton;
+    private TextView sample;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +24,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        sampleButton = (TextView) findViewById(R.id.sample);
-        sampleButton.setOnClickListener(new View.OnClickListener() {
+        sample = (TextView) findViewById(R.id.sample);
+        sample.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openMovieActivity();

@@ -31,6 +31,15 @@ public class CastActivity extends AppCompatActivity {
             }
         });
 
+        final Button home2 = findViewById(R.id.home2);
+        home2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CastActivity.this, HomeActivity.class));
+
+            }
+        });
+
 
 
 
