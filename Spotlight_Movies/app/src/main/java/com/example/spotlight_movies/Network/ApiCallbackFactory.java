@@ -11,7 +11,6 @@ public class ApiCallbackFactory {
     private static String LANGUAGE = "en-US";
     public static int PAGE = 1;
 
-
     public ArrayList<MovieResults.Result> manageCallback(String category) {
         final ArrayList<MovieResults.Result> listOfMovies = new ArrayList<>();
         Call<MovieResults> call = ApiClient.create().listOfMovies(category,API_KEY,LANGUAGE,PAGE);
