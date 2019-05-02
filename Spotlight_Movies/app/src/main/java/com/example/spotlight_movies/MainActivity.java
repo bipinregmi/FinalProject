@@ -1,28 +1,90 @@
 package com.example.spotlight_movies;
 
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
+import com.example.spotlight_movies.adapters.MainFragmentPager;
+
+/**
+ * Created by 5-Star Production
+ * Bipin , Kyle, Arnie, Anthony & Roborto.
+ */
 public class MainActivity extends AppCompatActivity {
-    private static int SPLASH_TIME_OUT = 4000;
+
+    private ViewPager mViewPager;
+    View translucentView;
+    FloatingActionButton SearchButton;
+
+
+    /**
+     * The Viewpager will host the section contents.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new Handler().postDelayed(new Runnable() {
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("SPOTLIGHT MOVIES");
+
+        translucentView = (View) findViewById(R.id.translucentView);
+
+        SearchButton = (FloatingActionButton) findViewById(R.id.searchFabButton);
+
+
+        TabLayout mainTabLayout = (TabLayout) findViewById(R.id.mainTabs);
+
+        mainTabLayout.addTab(mainTabLayout.newTab());
+        mainTabLayout.addTab(mainTabLayout.newTab());
+
+
+        MainFragmentPager mainFragmentPager = new MainFragmentPager(getSupportFragmentManager());
+
+        // Set up the ViewPager with the sections adapter.
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(mainFragmentPager);
+        mainTabLayout.setupWithViewPager(mViewPager);
+
+        mainTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void run() {
-                Intent homeIntent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(homeIntent);
-                finish();
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
 
             }
-        },SPLASH_TIME_OUT);
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        //Here is the on click listener for search
+        SearchButton.setOnClickListener(new View.OnClickListener(){
+
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this,SearchActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
     }
+
 
 }
