@@ -5,42 +5,30 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
-import android.widget.TextView;
+/**
+ * Created by 5-Star Production
+ * Bipin , Kyle, Arnie, Anthony & Roborto.
+ */
 
 public class LoginActivity extends AppCompatActivity {
     private CardView loginButton;
-    private TextView sample;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        loginButton = (CardView) findViewById(R.id.login);
+        loginButton = (CardView) findViewById(R.id.guest);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openHomeActivity();
             }
         });
-
-        sample = (TextView) findViewById(R.id.sample);
-        sample.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMovieActivity();
-            }
-        });
-
     }
 
     public void openHomeActivity(){
-        Intent intent= new Intent(this,HomeActivity.class);
-        startActivity(intent);
-    }
-
-    public void openMovieActivity(){
-        Intent intent= new Intent(this,MovieActivity.class);
+        Intent intent= new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

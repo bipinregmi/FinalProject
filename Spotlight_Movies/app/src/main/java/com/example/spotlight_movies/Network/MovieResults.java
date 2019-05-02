@@ -4,7 +4,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
-
+/**
+ * Created by 5-Star Production
+ * Bipin , Kyle, Arnie, Anthony & Roborto.
+ */
 public class MovieResults {
 
     @SerializedName("page")
@@ -54,9 +57,6 @@ public class MovieResults {
 
     public class Result {
 
-        @SerializedName("vote_count")
-        @Expose
-        private Integer voteCount;
         @SerializedName("id")
         @Expose
         private Integer id;
@@ -97,13 +97,6 @@ public class MovieResults {
         @Expose
         private String releaseDate;
 
-        public Integer getVoteCount() {
-            return voteCount;
-        }
-
-        public void setVoteCount(Integer voteCount) {
-            this.voteCount = voteCount;
-        }
 
         public Integer getId() {
             return id;

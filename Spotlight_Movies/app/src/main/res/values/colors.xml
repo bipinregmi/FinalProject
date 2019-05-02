@@ -3,8 +3,11 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#273833</color>
     <color name="gray">#EB646262</color>
-    <color name="lightorange">#FDF2DF</color>
+    <color name="lightorange">#fdf2df</color>
     <color name="lightorangedark">#ebd6ab</color>
-    <color name="colorAccent">#48050F</color>
+    <color name="colorAccent">#D81B60</color>
     <color name="MainColor">#8C4545</color>
+    <color name="Charcoal">#353C51</color>
+    <color name="SlateGray">#767D92</color>
+    <color name="white">#ffffff</color>
 </resources>
