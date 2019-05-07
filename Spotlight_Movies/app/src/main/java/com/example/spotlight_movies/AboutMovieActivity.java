@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.example.spotlight_movies.Fragments.MovieCastFragment;
 import com.example.spotlight_movies.Fragments.MovieInfoFragment;
@@ -53,14 +54,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFragment.InfoAboutMovieFragmentListener {
 
 
-
-
     private BannerViewPagerAdapter bannerViewPagerAdapter;
     private ArrayList<String> allBannerImageFullLinks;
     ImageView poster;
     private TabLayout tabLayout;
     private ViewPager mViewPager;
     private FragmentPager fragmentPager = new FragmentPager(getSupportFragmentManager());
+    VideoView videoTrailerVideoView;
     TextView movieNameTextView;
     TextView genreTextView;
     TextView releaseDateTextView;
@@ -82,6 +82,7 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
         movie_id = intent.getIntExtra("movie_id", 0);
         final String posterPath = intent.getStringExtra("posterPath");
         movieName = intent.getStringExtra("movieName");
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -138,6 +139,7 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
             }
         });
 
+        videoTrailerVideoView = (VideoView) findViewById(R.id.videoViewTrailer);
 
         movieNameTextView = (TextView) findViewById(R.id.nameTextView);
         movieNameTextView.setText(movieName);
@@ -306,6 +308,34 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
 
             }
         });
+/*
+        Call<MovieResponse> callTrailer = service.getTrailer(movie_id, URLConstants.API_KEY, 1);
+        callTrailer.enqueue(new Callback<MovieResponse>() {
+            @Override
+            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                ArrayList<Movie> trailerList = response.body().getMovies();
+                if (trailerList == null) {
+                    return;
+                }
+
+                for (Movie object : trailerList) {
+                    //videoTrailerVideoView.add(object);
+                    return;
+                }
+/*
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("SIMILAR", true);
+                bundle.putSerializable("SIMILAR_MOVIES", trailerList);
+
+                MovieInfoFragment obj1 = (MovieInfoFragment) fragmentPager.function(0);
+                obj1.setUIArguments(bundle);
+            }
+
+            @Override
+            public void onFailure(Call<MovieResponse> call, Throwable t) {
+
+            }
+        });*/
 
     }
 
