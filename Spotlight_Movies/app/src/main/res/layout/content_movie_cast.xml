@@ -16,8 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/movieCastImage"
         android:layout_marginLeft="5dp"
+        android:textColor="@color/white"
         android:layout_centerInParent="true"
-        android:textColor="@android:color/black"
         android:id="@+id/movieCastName" />
 
     <TextView
@@ -26,6 +26,7 @@
         android:id="@+id/moviCastCharacter"
         android:textStyle="italic"
         android:layout_marginLeft="25dp"
+        android:textColor="@color/white"
         android:layout_centerInParent="true"
         android:layout_toRightOf="@+id/movieCastName"/>
 

@@ -44,6 +44,7 @@
         android:background="@drawable/edittext_bg"
         android:ems="10"
         android:hint=" Password"
+        android:textSize="16dp"
         android:inputType="textPassword"/>
 
     <android.support.v7.widget.CardView
@@ -52,7 +53,6 @@
         android:id="@+id/login"
         android:layout_below="@+id/editText2"
         android:layout_centerHorizontal="true"
-        app:cardBackgroundColor="#4169e1"
         app:cardCornerRadius="25dp"
         app:cardElevation="10dp"
         android:layout_marginTop="68dp">
@@ -60,9 +60,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignStart="@+id/login"
+            android:layout_alignLeft="@+id/login"
             android:layout_alignTop="@+id/login"
-            android:background="#E91E1E">
+            android:background="#ff5252">
 
             <TextView
                 android:id="@+id/textView1"
