@@ -57,22 +57,24 @@
         app:cardElevation="10dp"
         android:layout_marginTop="68dp">
 
-    <RelativeLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_alignStart="@+id/login"
+            android:layout_alignTop="@+id/login"
+            android:background="#E91E1E">
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:textSize="17dp"
-            android:textColor="#fff"
-            android:layout_centerInParent="true"
-            />
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Login"
+                android:textColor="#fff"
+                android:textSize="17dp" />
 
 
-    </RelativeLayout>
+        </RelativeLayout>
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
@@ -83,21 +85,22 @@
         android:layout_centerHorizontal="true"
         app:cardBackgroundColor="#4169e1"
         app:cardCornerRadius="25dp"
-        app:cardElevation="10dp"
+        app:cardElevation="2dp"
         android:layout_marginTop="20dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="#3F51B5">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:text="Continue As Guest"
-                android:textSize="17dp"
                 android:textColor="#fff"
-                android:layout_centerInParent="true"/>
+                android:textSize="17dp" />
 
 
         </RelativeLayout>
