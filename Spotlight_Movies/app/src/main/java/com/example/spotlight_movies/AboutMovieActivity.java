@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
@@ -11,7 +13,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -53,6 +57,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFragment.InfoAboutMovieFragmentListener {
 
+    private VideoView videoView;
+    private MediaController mediaController;
+    String TAG = "VideoPlayer";
+
 
     private BannerViewPagerAdapter bannerViewPagerAdapter;
     private ArrayList<String> allBannerImageFullLinks;
@@ -60,7 +68,6 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
     private TabLayout tabLayout;
     private ViewPager mViewPager;
     private FragmentPager fragmentPager = new FragmentPager(getSupportFragmentManager());
-    VideoView videoTrailerVideoView;
     TextView movieNameTextView;
     TextView genreTextView;
     TextView releaseDateTextView;
@@ -71,11 +78,19 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
     ArrayList<Movie> mainSimilarMovies = new ArrayList<>();
     AboutMovieResponse aboutMovieResponse;
 
+    //VideoView videoTrailerVideoView;
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_movie);
+        //configureVideoView();
         setTitle("");
+
 
         Intent intent = getIntent();
 
@@ -94,6 +109,8 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         allBannerImageFullLinks = new ArrayList<String>();
+
+
 
 
         /*
@@ -137,9 +154,15 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
             public void onPrepareLoad(Drawable placeHolderDrawable) {
 
             }
+
         });
 
-        videoTrailerVideoView = (VideoView) findViewById(R.id.videoViewTrailer);
+
+        videoView = (VideoView) findViewById(R.id.videoViewTrailer);
+        videoView = (VideoView)findViewById(R.id.videoViewTrailer);
+        videoView.setVideoPath("http://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4");
+        videoView.start();
+
 
         movieNameTextView = (TextView) findViewById(R.id.nameTextView);
         movieNameTextView.setText(movieName);
@@ -308,36 +331,36 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
 
             }
         });
-/*
-        Call<MovieResponse> callTrailer = service.getTrailer(movie_id, URLConstants.API_KEY, 1);
-        callTrailer.enqueue(new Callback<MovieResponse>() {
-            @Override
-            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-                ArrayList<Movie> trailerList = response.body().getMovies();
-                if (trailerList == null) {
-                    return;
-                }
-
-                for (Movie object : trailerList) {
-                    //videoTrailerVideoView.add(object);
-                    return;
-                }
-/*
-                Bundle bundle = new Bundle();
-                bundle.putBoolean("SIMILAR", true);
-                bundle.putSerializable("SIMILAR_MOVIES", trailerList);
-
-                MovieInfoFragment obj1 = (MovieInfoFragment) fragmentPager.function(0);
-                obj1.setUIArguments(bundle);
-            }
-
-            @Override
-            public void onFailure(Call<MovieResponse> call, Throwable t) {
-
-            }
-        });*/
 
     }
+/*
+    private void configureVideoView() {
+
+
+        videoView = findViewById(R.id.videoViewTrailer);
+
+        videoView.setVideoPath(
+                "https://www.youtube.com/watch?v=hA6hldpSTF8");
+
+        mediaController = new
+                MediaController(this);
+        mediaController.setAnchorView(videoView);
+        videoView.setMediaController(mediaController);
+
+        videoView.setOnPreparedListener(new
+                                                MediaPlayer.OnPreparedListener()  {
+                                                    @Override
+                                                    public void onPrepared(MediaPlayer mp) {
+                                                        mp.setLooping(true);
+                                                        Log.i(TAG, "Duration = " +
+                                                                videoView.getDuration());
+                                                    }
+                                                });
+        videoView.start();
+    }
+
+*/
+
 
     @Override
     public boolean onSupportNavigateUp() {
