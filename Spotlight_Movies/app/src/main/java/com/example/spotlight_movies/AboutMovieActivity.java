@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
@@ -11,10 +13,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.example.spotlight_movies.Fragments.MovieCastFragment;
 import com.example.spotlight_movies.Fragments.MovieInfoFragment;
@@ -52,7 +57,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFragment.InfoAboutMovieFragmentListener {
 
-
+    private VideoView videoView;
+    private MediaController mediaController;
+    String TAG = "VideoPlayer";
 
 
     private BannerViewPagerAdapter bannerViewPagerAdapter;
@@ -71,17 +78,26 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
     ArrayList<Movie> mainSimilarMovies = new ArrayList<>();
     AboutMovieResponse aboutMovieResponse;
 
+    //VideoView videoTrailerVideoView;
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_movie);
+        //configureVideoView();
         setTitle("");
+
 
         Intent intent = getIntent();
 
         movie_id = intent.getIntExtra("movie_id", 0);
         final String posterPath = intent.getStringExtra("posterPath");
         movieName = intent.getStringExtra("movieName");
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -93,6 +109,8 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         allBannerImageFullLinks = new ArrayList<String>();
+
+
 
 
         /*
@@ -136,7 +154,14 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
             public void onPrepareLoad(Drawable placeHolderDrawable) {
 
             }
+
         });
+
+
+        videoView = (VideoView) findViewById(R.id.videoViewTrailer);
+        videoView = (VideoView)findViewById(R.id.videoViewTrailer);
+        videoView.setVideoPath("http://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4");
+        videoView.start();
 
 
         movieNameTextView = (TextView) findViewById(R.id.nameTextView);
@@ -308,6 +333,34 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
         });
 
     }
+/*
+    private void configureVideoView() {
+
+
+        videoView = findViewById(R.id.videoViewTrailer);
+
+        videoView.setVideoPath(
+                "https://www.youtube.com/watch?v=hA6hldpSTF8");
+
+        mediaController = new
+                MediaController(this);
+        mediaController.setAnchorView(videoView);
+        videoView.setMediaController(mediaController);
+
+        videoView.setOnPreparedListener(new
+                                                MediaPlayer.OnPreparedListener()  {
+                                                    @Override
+                                                    public void onPrepared(MediaPlayer mp) {
+                                                        mp.setLooping(true);
+                                                        Log.i(TAG, "Duration = " +
+                                                                videoView.getDuration());
+                                                    }
+                                                });
+        videoView.start();
+    }
+
+*/
+
 
     @Override
     public boolean onSupportNavigateUp() {

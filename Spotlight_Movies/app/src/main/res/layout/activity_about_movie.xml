@@ -56,6 +56,11 @@
                 android:layout_height="match_parent"
                 android:background="@color/MainColor">
 
+                <VideoView
+                    android:id="@+id/videoViewTrailer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
                 <ImageView
                     android:id="@+id/posterWithBannerImageView"
                     android:layout_width="100dp"

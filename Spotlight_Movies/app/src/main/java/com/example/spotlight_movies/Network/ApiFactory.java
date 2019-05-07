@@ -16,6 +16,9 @@ public interface ApiFactory {
     @GET("popular")
     Call<MovieResponse> getPopularMovies(@Query("api_key") String api_key,
                                                                          @Query("page") int page);
+    @GET("trailer")
+    Call<MovieResponse> getTrailer(@Path("id") int id, @Query("api_key") String api_key,
+                                         @Query("page") int page);
 
     @GET("now_playing")
     Call<MovieResponse> getNowPlayingMovies(@Query("api_key") String api_key,
@@ -41,6 +44,8 @@ public interface ApiFactory {
 
     @GET("{id}/similar")
     Call<MovieResponse> getSimilarMovies(@Path("id") int id, @Query("api_key") String api_key, @Query("page") int page);
+
+
 
 
 }
