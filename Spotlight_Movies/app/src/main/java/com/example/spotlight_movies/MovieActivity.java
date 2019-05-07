@@ -1,6 +1,8 @@
 package com.example.spotlight_movies;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -8,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.VideoView;
 
 public class MovieActivity extends AppCompatActivity {
     /*
@@ -48,13 +51,6 @@ public class MovieActivity extends AppCompatActivity {
         });
 
     }
-
-
-
-
-
-
-
 
 /*
 

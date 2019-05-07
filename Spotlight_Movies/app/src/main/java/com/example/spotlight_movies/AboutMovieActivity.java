@@ -84,12 +84,36 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_movie);
-        //configureVideoView();
+        configureVideoView();
         setTitle("");
+        /*
+
+        String path = "http://demo.digi-corp.com/S2LWebservice/Resources/SampleVideo.mp4";
+
+        Uri uri = Uri.parse(path);
+
+        VideoView vv = (VideoView) findViewById(R.id.videoViewTrailer);
+
+        vv.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+            @Override
+            public boolean onError(MediaPlayer arg0, int arg1, int arg2) {return false;}
+        });try {vv.setVideoURI(uri);} catch (Exception e) {}
+
+        try {vv.start();} catch (Exception e) {}
+
+        vv.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+                mp.setOnCompletionListener(null);
+            }
+        });*/
 
 
         Intent intent = getIntent();
@@ -157,11 +181,11 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
 
         });
 
-
+/*
         videoView = (VideoView) findViewById(R.id.videoViewTrailer);
         videoView = (VideoView)findViewById(R.id.videoViewTrailer);
-        videoView.setVideoPath("http://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4");
-        videoView.start();
+        videoView.setVideoPath("hhttps://www.youtube.com/watch?v=hA6hldpSTF8");
+        videoView.start();*/
 
 
         movieNameTextView = (TextView) findViewById(R.id.nameTextView);
@@ -333,7 +357,9 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
         });
 
     }
-/*
+
+
+
     private void configureVideoView() {
 
 
@@ -359,7 +385,7 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
         videoView.start();
     }
 
-*/
+
 
 
     @Override
