@@ -28,6 +28,9 @@ public class AboutMovieResponse {
     @SerializedName("genres")
     private ArrayList<Genre> genres;
 
+    @SerializedName("key")
+    private String key;
+
 
     public String getOverview() {
         return overview;
@@ -76,6 +79,10 @@ public class AboutMovieResponse {
     public void setGenres(ArrayList<Genre> genres) {
         this.genres = genres;
     }
+
+    public String getMovieKey() {return key;}
+
+    public void setMovieKey (String key){this.key = key;}
 
 
 }

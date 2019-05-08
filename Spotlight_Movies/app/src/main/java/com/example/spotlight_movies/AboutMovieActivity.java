@@ -1,11 +1,11 @@
 package com.example.spotlight_movies;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
@@ -14,12 +14,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import com.example.spotlight_movies.Fragments.MovieCastFragment;
 import com.example.spotlight_movies.Fragments.MovieInfoFragment;
@@ -38,6 +45,7 @@ import com.example.spotlight_movies.models.Movie;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -55,11 +63,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * https://developer.android.com/reference/android/support/v4/app/FragmentPagerAdapter
  * more to include
  */
-public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFragment.InfoAboutMovieFragmentListener {
 
+@SuppressLint("SetJavaScriptEnabled")
+public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFragment.InfoAboutMovieFragmentListener {
+/*
     private VideoView videoView;
     private MediaController mediaController;
     String TAG = "VideoPlayer";
+*//*
+    private WebView mWebView;
+    private boolean mIsPaused = false;*/
 
 
     private BannerViewPagerAdapter bannerViewPagerAdapter;
@@ -78,42 +91,52 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
     ArrayList<Movie> mainSimilarMovies = new ArrayList<>();
     AboutMovieResponse aboutMovieResponse;
 
-    //VideoView videoTrailerVideoView;
+    String myVideoYoutubeId = "eOrNdBpGMv8";
 
-
-
-
-
-
+    private WebView webView;
+    private FrameLayout customViewContainer;
+    private WebChromeClient.CustomViewCallback customViewCallback;
+    private View mCustomView;
+    private myWebChromeClient mWebChromeClient;
+    private myWebViewClient mWebViewClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_movie);
-        configureVideoView();
+        //configureVideoView();
         setTitle("");
-        /*
 
-        String path = "http://demo.digi-corp.com/S2LWebservice/Resources/SampleVideo.mp4";
 
-        Uri uri = Uri.parse(path);
+        String media_url = "https://www.youtube.com/embed/" + myVideoYoutubeId;
+/*
+        mWebView = (WebView) findViewById(R.id.webView);
+        mWebView.setWebChromeClient(new WebChromeClient());
 
-        VideoView vv = (VideoView) findViewById(R.id.videoViewTrailer);
 
-        vv.setOnErrorListener(new MediaPlayer.OnErrorListener() {
-            @Override
-            public boolean onError(MediaPlayer arg0, int arg1, int arg2) {return false;}
-        });try {vv.setVideoURI(uri);} catch (Exception e) {}
+        WebSettings ws = mWebView.getSettings();
+        ws.setBuiltInZoomControls(true);
+        ws.setJavaScriptEnabled(true);
 
-        try {vv.start();} catch (Exception e) {}
+        mIsPaused = true;
+        resumeBrowser();
+        mWebView.loadUrl(media_url);*/
 
-        vv.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                mp.setLooping(true);
-                mp.setOnCompletionListener(null);
-            }
-        });*/
+        customViewContainer = (FrameLayout) findViewById(R.id.customViewContainer);
+        webView = (WebView) findViewById(R.id.webView);
+
+        mWebViewClient = new myWebViewClient();
+        webView.setWebViewClient(mWebViewClient);
+
+        mWebChromeClient = new myWebChromeClient();
+        webView.setWebChromeClient(mWebChromeClient);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setAppCacheEnabled(true);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setSaveFormData(true);
+        webView.loadUrl(media_url);
+
+
 
 
         Intent intent = getIntent();
@@ -180,12 +203,6 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
             }
 
         });
-
-/*
-        videoView = (VideoView) findViewById(R.id.videoViewTrailer);
-        videoView = (VideoView)findViewById(R.id.videoViewTrailer);
-        videoView.setVideoPath("hhttps://www.youtube.com/watch?v=hA6hldpSTF8");
-        videoView.start();*/
 
 
         movieNameTextView = (TextView) findViewById(R.id.nameTextView);
@@ -280,6 +297,7 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
                 aboutMovieResponse.setBudget(response.body().getBudget());
                 aboutMovieResponse.setRevenue(response.body().getRevenue());
                 aboutMovieResponse.setGenres(response.body().getGenres());
+                aboutMovieResponse.setMovieKey(response.body().getMovieKey());
 
 
                 if (aboutMovieResponse.getReleaseDate().length() >= 5)
@@ -292,6 +310,8 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
                 bundle.putString("RELEASE_DATE", aboutMovieResponse.getReleaseDate());
                 bundle.putLong("BUDGET", aboutMovieResponse.getBudget());
                 bundle.putLong("REVENUE", aboutMovieResponse.getRevenue());
+
+                //myVideoYoutubeId = aboutMovieResponse.getMovieKey();
 
 
                 MovieInfoFragment obj1 = (MovieInfoFragment) fragmentPager.function(0);
@@ -359,34 +379,55 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
     }
 
 
+/*
 
-    private void configureVideoView() {
-
-
-        videoView = findViewById(R.id.videoViewTrailer);
-
-        videoView.setVideoPath(
-                "https://www.youtube.com/watch?v=hA6hldpSTF8");
-
-        mediaController = new
-                MediaController(this);
-        mediaController.setAnchorView(videoView);
-        videoView.setMediaController(mediaController);
-
-        videoView.setOnPreparedListener(new
-                                                MediaPlayer.OnPreparedListener()  {
-                                                    @Override
-                                                    public void onPrepared(MediaPlayer mp) {
-                                                        mp.setLooping(true);
-                                                        Log.i(TAG, "Duration = " +
-                                                                videoView.getDuration());
-                                                    }
-                                                });
-        videoView.start();
+    @Override
+    protected void onPause()
+    {
+        pauseBrowser();
+        super.onPause();
     }
 
+    @Override
+    protected void onResume()
+    {
+        resumeBrowser();
+        super.onResume();
+    }
 
+    private void pauseBrowser()
+    {
+        if (!mIsPaused)
+        {
+            // pause flash and javascript etc
+            callHiddenWebViewMethod(mWebView, "onPause");
+            mWebView.pauseTimers();
+            mIsPaused = true;
+        }
+    }
 
+    private void resumeBrowser()
+    {
+        if (mIsPaused)
+        {
+            // resume flash and javascript etc
+            callHiddenWebViewMethod(mWebView, "onResume");
+            mWebView.resumeTimers();
+            mIsPaused = false;
+        }
+    }
+
+    private void callHiddenWebViewMethod(final WebView wv, final String name)
+    {
+        try
+        {
+            final Method method = WebView.class.getMethod(name);
+            method.invoke(mWebView);
+        } catch (final Exception e)
+        {}
+    }
+
+*/
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -401,6 +442,114 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
         intent.putExtra("movieName", movieName);
         startActivity(intent);
 
+    }
+
+
+
+    public boolean inCustomView() {
+        return (mCustomView != null);
+    }
+
+    public void hideCustomView() {
+        mWebChromeClient.onHideCustomView();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();    //To change body of overridden methods use File | Settings | File Templates.
+        webView.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();    //To change body of overridden methods use File | Settings | File Templates.
+        webView.onResume();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();    //To change body of overridden methods use File | Settings | File Templates.
+        if (inCustomView()) {
+            hideCustomView();
+        }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+            if (inCustomView()) {
+                hideCustomView();
+                return true;
+            }
+
+            if ((mCustomView == null) && webView.canGoBack()) {
+                webView.goBack();
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    class myWebChromeClient extends WebChromeClient {
+        private Bitmap mDefaultVideoPoster;
+        private View mVideoProgressView;
+
+        @Override
+        public void onShowCustomView(View view, int requestedOrientation, CustomViewCallback callback) {
+            onShowCustomView(view, callback);    //To change body of overridden methods use File | Settings | File Templates.
+        }
+
+        @Override
+        public void onShowCustomView(View view,CustomViewCallback callback) {
+
+            // if a view already exists then immediately terminate the new one
+            if (mCustomView != null) {
+                callback.onCustomViewHidden();
+                return;
+            }
+            mCustomView = view;
+            webView.setVisibility(View.GONE);
+            customViewContainer.setVisibility(View.VISIBLE);
+            customViewContainer.addView(view);
+            customViewCallback = callback;
+        }
+
+        @Override
+        public View getVideoLoadingProgressView() {
+
+            if (mVideoProgressView == null) {
+                LayoutInflater inflater = LayoutInflater.from(AboutMovieActivity.this);
+                mVideoProgressView = inflater.inflate(R.layout.video_progress, null);
+            }
+            return mVideoProgressView;
+        }
+
+        @Override
+        public void onHideCustomView() {
+            super.onHideCustomView();    //To change body of overridden methods use File | Settings | File Templates.
+            if (mCustomView == null)
+                return;
+
+            webView.setVisibility(View.VISIBLE);
+            customViewContainer.setVisibility(View.GONE);
+
+            // Hide the custom view.
+            mCustomView.setVisibility(View.GONE);
+
+            // Remove the custom view from its container.
+            customViewContainer.removeView(mCustomView);
+            customViewCallback.onCustomViewHidden();
+
+            mCustomView = null;
+        }
+    }
+
+    class myWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            return super.shouldOverrideUrlLoading(view, url);    //To change body of overridden methods use File | Settings | File Templates.
+        }
     }
 }
 
