@@ -24,6 +24,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:background="@color/MainColor"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/AppTheme.PopupOverlay">
 
@@ -33,7 +34,8 @@
                 android:id="@+id/mainTabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabIndicatorColor="@android:color/white" />
+                app:tabIndicatorColor="@android:color/white"
+                app:tabRippleColor="@color/MainOffset" />
 
         </android.support.design.widget.AppBarLayout>
 

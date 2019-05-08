@@ -59,7 +59,7 @@
                 <WebView
                     android:id="@+id/webView"
                     android:layout_width="match_parent"
-                    android:layout_height="314dp" />
+                    android:layout_height="match_parent" />
 
                 <FrameLayout
                     android:id="@+id/customViewContainer"
