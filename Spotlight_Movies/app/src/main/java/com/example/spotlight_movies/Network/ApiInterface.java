@@ -24,4 +24,11 @@ public interface ApiInterface {
             @Query("query") String query
     );
 
+    @GET("/3/movie/{movie_id}/videos")
+    Call<VideoResults> listOfVideos(
+            @Path("movie_id") int movie_id,
+            @Query("api_key") String apiKey,
+            @Query("language") String language
+    );
+
 }
