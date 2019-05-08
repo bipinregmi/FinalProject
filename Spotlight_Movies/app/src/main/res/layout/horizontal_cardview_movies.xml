@@ -15,22 +15,25 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#303030">
+        android:background="@color/MainColor">
+
         <FrameLayout
+            android:id="@+id/frame"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/frame" >
+            android:layout_height="wrap_content">
+
             <ImageView
                 android:id="@+id/thumbnailImageView"
                 android:layout_width="match_parent"
                 android:layout_height="196dp"
                 android:scaleType="fitXY"
                 android:transitionName="posterImageTransition" />
+
             <ImageView
-                android:src="@drawable/frame"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
+                android:src="@drawable/frame"
                 android:tint="#303030"
                 android:transitionName="posterImageTransition" />
 
@@ -68,7 +71,6 @@
             android:paddingLeft="4dp"
             android:textColor="@android:color/white"
             android:textSize="14dp" />
-
 
 
     </RelativeLayout>
