@@ -25,6 +25,7 @@
             android:label="SpotLight">
 
         </activity>
+        <activity android:name=".SearchActivity" />
         <activity
             android:name=".AboutMovieActivity"
             android:theme="@style/AppTheme.NoActionBar" />

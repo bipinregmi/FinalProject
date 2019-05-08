@@ -103,9 +103,18 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+
+        Button searchButton = findViewById(R.id.searchView);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, SearchActivity.class));
+
+            }
+        });
     }
 
-
+/*
     private void populateRecyclerViews() {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
         final Button logoff = findViewById(R.id.logoff);
@@ -131,6 +140,7 @@ public class HomeActivity extends AppCompatActivity {
 
         initRecyclerView();
     }
+    */
 
 /*UNUSED:
     private void getImages(){
