@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -32,10 +33,13 @@ import com.example.spotlight_movies.Fragments.MovieCastFragment;
 import com.example.spotlight_movies.Fragments.MovieInfoFragment;
 import com.example.spotlight_movies.Network.AboutMovieResponse;
 import com.example.spotlight_movies.Network.ApiFactory;
+import com.example.spotlight_movies.Network.ApiInterface;
 import com.example.spotlight_movies.Network.CastResponse;
 import com.example.spotlight_movies.Network.ImageResponse;
 import com.example.spotlight_movies.Network.MovieResponse;
+import com.example.spotlight_movies.Network.MovieResults;
 import com.example.spotlight_movies.Network.URLConstants;
+import com.example.spotlight_movies.Network.VideoResults;
 import com.example.spotlight_movies.adapters.BannerViewPagerAdapter;
 import com.example.spotlight_movies.adapters.FragmentPager;
 import com.example.spotlight_movies.models.BackdropImage;
@@ -47,6 +51,7 @@ import com.squareup.picasso.Target;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -100,6 +105,14 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
     private myWebChromeClient mWebChromeClient;
     private myWebViewClient mWebViewClient;
 
+    // ===Kyle's API variables===
+    public static String BASE_URL = "https://api.themoviedb.org/";
+    public static String API_KEY = "94f2d3081ba573d2f171f0f8020eb38a";
+    public static String LANGUAGE = "en-US";
+    public static String BASE_VIDEO_URL = "https://www.youtube.com/embed/";
+    public String media_url;
+    // ========================
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +121,43 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
         setTitle("");
 
 
-        String media_url = "https://www.youtube.com/embed/" + myVideoYoutubeId;
+        // This has to go above Kyle's API Stuff so that I can pass the movie_id and get the trailer
+        Intent intent = getIntent();
+        movie_id = intent.getIntExtra("movie_id", 0);
+
+
+        // ======= Kyle's API Stuff...=======
+        final Retrofit retrofitGetVideos = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ApiInterface myInterfaceVids = retrofitGetVideos.create(ApiInterface.class);
+        Call<VideoResults> callGetVids = myInterfaceVids.listOfVideos(movie_id,API_KEY,LANGUAGE);
+
+        callGetVids.enqueue(new Callback<VideoResults>() {
+            @Override
+            public void onResponse(Call<VideoResults> callGetVids, Response<VideoResults> response) {
+                VideoResults results = response.body();
+                List<VideoResults.Result> listOfVideos = results.getResults();
+                String trailer_key = listOfVideos.get(0).getKey();
+
+                media_url = BASE_VIDEO_URL + trailer_key;
+                System.out.println(media_url);
+            }
+
+            @Override
+            public void onFailure(Call<VideoResults> callGetVids, Throwable t) {
+                t.printStackTrace();
+
+            }
+        });
+        // ==================================
+
+
+
+
+        //THIS LINE IS UNUSED - THIS IS SET IN Kyle's API Stuff callback: String media_url = "https://www.youtube.com/embed/" + myVideoYoutubeId;
 /*
         mWebView = (WebView) findViewById(R.id.webView);
         mWebView.setWebChromeClient(new WebChromeClient());
@@ -139,9 +188,7 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
 
 
 
-        Intent intent = getIntent();
 
-        movie_id = intent.getIntExtra("movie_id", 0);
         final String posterPath = intent.getStringExtra("posterPath");
         movieName = intent.getStringExtra("movieName");
 

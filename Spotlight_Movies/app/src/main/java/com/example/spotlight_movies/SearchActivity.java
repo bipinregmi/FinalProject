@@ -32,14 +32,12 @@ public class SearchActivity extends AppCompatActivity {
 
     private static final String TAG = "SearchActivity";
 
-    // ===API test variables===
+    // ===API variables===
     public static String BASE_URL = "https://api.themoviedb.org/";
     public static int PAGE = 1;
     public static String API_KEY = "94f2d3081ba573d2f171f0f8020eb38a";
     public static String LANGUAGE = "en-US";
-    public static String CATEGORY_1 = "search";
     public static String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w185/";
-    public static String SEARCH_URL = "https://api.themoviedb.org/3/search/movie?api_key=94f2d3081ba573d2f171f0f8020eb38a&language=en-US&query=";
     // ========================
 
     //variables
@@ -63,7 +61,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-                // API Stuff...
+                // Kyle's API Stuff...
                 final Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl(BASE_URL)
                         .addConverterFactory(GsonConverterFactory.create())
