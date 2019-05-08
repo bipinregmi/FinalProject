@@ -143,7 +143,11 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
                 String trailer_key = listOfVideos.get(0).getKey();
 
                 media_url = BASE_VIDEO_URL + trailer_key;
-                System.out.println(media_url);
+                System.out.println("TEST IMMEDIATELY AFTER SETTING media_url = " + media_url);
+
+                webView.loadUrl(media_url);
+                webView.reload();
+
             }
 
             @Override
@@ -154,8 +158,12 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
         });
         // ==================================
 
-
-
+        /* // horrible bandaid that doesn't seem to work
+        for (int i = 0; i < 20000; i++) {
+            System.out.println("Waiting for response from API : media_url (" + i + ")");
+        }
+        System.out.println("Received media_url!!!");
+        */
 
         //THIS LINE IS UNUSED - THIS IS SET IN Kyle's API Stuff callback: String media_url = "https://www.youtube.com/embed/" + myVideoYoutubeId;
 /*
@@ -183,8 +191,10 @@ public class AboutMovieActivity extends AppCompatActivity implements MovieInfoFr
         webView.getSettings().setAppCacheEnabled(true);
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setSaveFormData(true);
+        System.out.println("TEST IMMEDIATELY BEFORE webView.loadUrl(media_url) : " + media_url);
         webView.loadUrl(media_url);
-
+        System.out.println("TEST IMMEDIATELY AFTER webView.loadUrl(media_url) : " + media_url);
+        System.out.println("TEST webView.getUrl() : " + webView.getUrl());
 
 
 
