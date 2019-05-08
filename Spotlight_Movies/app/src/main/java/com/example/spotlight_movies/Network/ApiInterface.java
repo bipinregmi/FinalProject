@@ -15,4 +15,13 @@ public interface ApiInterface {
             @Query("page") int page
     );
 
+    @GET("/3/search/movie")
+    Call<MovieResults> listOfMoviesSearched(
+            //@Path("category") String category,
+            @Query("api_key") String apiKey,
+            @Query("language") String language,
+            @Query("page") int page,
+            @Query("query") String query
+    );
+
 }

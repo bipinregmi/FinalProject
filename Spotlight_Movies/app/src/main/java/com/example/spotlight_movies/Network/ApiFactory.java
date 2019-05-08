@@ -45,10 +45,10 @@ public interface ApiFactory {
     @GET("{id}/similar")
     Call<MovieResponse> getSimilarMovies(@Path("id") int id, @Query("api_key") String api_key, @Query("page") int page);
 
+    @GET("search")
+    Call<MovieResponse> searchMovie(@Query("api_key") String api_key, @Query("query") String query, @Query("page") int page);
+
     @GET("/movie/{movie_id}/videos")
     Call<AboutMovieResponse> getMovieKey(@Path("id") int id, @Query("api_key") String api_key);
-
-
-
 
 }
